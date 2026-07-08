@@ -39,3 +39,21 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
         run: |
           dbt test --profiles-dir .
+
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1 # お使いのリージョンに合わせてください
+
+      - name: Generate docs
+        run: dbt docs generate
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: target
+  
