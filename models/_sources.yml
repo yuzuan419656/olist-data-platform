@@ -2,24 +2,25 @@ version: 2
 
 sources:
   - name: olist_source
+    description: "OlistのECサイトから取り込まれた生データレイク"
     database: awsdatacatalog
     schema: olist_raw_db
     tables:
-      - name: stg_product_category_name_translation
-      - name: stg_customers
-      - name: stg_geolocation
-      - name: stg_order_items
-      - name: stg_order_payments
-      - name: stg_order_reviews
-      - name: stg_orders
-      - name: stg_products
-      - name: stg_sellers
-      - name: raw_orders
       - name: raw_customers
-      - name: raw_products
+        description: "顧客の基本情報。IDや地域情報を含む。"
       - name: raw_geolocation
+        description: "郵便番号と緯度経度のマッピング情報。"
       - name: raw_order_items
+        description: "注文に含まれる商品明細データ。"
       - name: raw_order_payments
+        description: "注文ごとの支払い情報。"
       - name: raw_order_reviews
+        description: "顧客による注文の評価とレビュー内容。"
+      - name: raw_orders
+        description: "注文のヘッダー情報（ステータスやタイムスタンプ）。"
+      - name: raw_products
+        description: "商品カタログ情報。"
       - name: raw_sellers
+        description: "商品を出品している販売者の情報。"
       - name: raw_product_category_name_translation
+        description: "商品カテゴリ名の多言語翻訳テーブル（ポルトガル語・英語）。"
