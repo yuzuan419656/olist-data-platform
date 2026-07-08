@@ -1,4 +1,4 @@
-name: dbt test
+name: dbt run and test
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test:
+  run-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,11 +24,18 @@ jobs:
         run: |
           pip install dbt-athena-community
 
+      - name: Run dbt run
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: 'ap-northeast-1'
+        run: |
+          dbt run --profiles-dir .
+
       - name: Run dbt test
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'ap-northeast-1'
         run: |
-          # 最後に --profiles-dir . を追加
           dbt test --profiles-dir .
