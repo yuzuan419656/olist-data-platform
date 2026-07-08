@@ -4,4 +4,4 @@ select
     customer_zip_code_prefix,
     customer_city,
     customer_state
-from {{ source('olist_source', 'stg_customers') }}
+from {{ source('olist_source', 'raw_customers') }}
