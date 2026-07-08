@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: olist_source
     database: awsdatacatalog
-    schema: default
+    schema: olist_raw_db
     tables:
       - name: stg_product_category_name_translation
       - name: stg_customers
