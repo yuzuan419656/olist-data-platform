@@ -22,3 +22,4 @@ sources:
       - name: raw_order_payments
       - name: raw_order_reviews
       - name: raw_sellers
+      - name: raw_product_category_name_translation
