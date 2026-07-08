@@ -1,0 +1,10 @@
+create or replace view
+    "awsdatacatalog"."olist_raw_db"."stg_customers"
+  as
+    select
+    customer_id,
+    customer_unique_id,
+    customer_zip_code_prefix,
+    customer_city,
+    customer_state
+from "awsdatacatalog"."olist_raw_db"."raw_customers"

@@ -1,0 +1,1 @@
+select * from "awsdatacatalog"."olist_raw_db"."raw_order_reviews"
